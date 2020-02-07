@@ -23,7 +23,6 @@ end
 
 SLASH_NEFHUNTERHELPER1 = "/unequipranged"
 SlashCmdList["NEFHUNTERHELPER"] = function(msg, editBox)
-	print(GetEmptyBagSlot());
 	PickupInventoryItem(18);
 	slot = GetEmptyBagSlot();
 	if slot == 0 then
