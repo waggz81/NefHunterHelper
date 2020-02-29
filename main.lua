@@ -3,19 +3,23 @@ NefHunterHelper = { }
 local function GetEmptyBagSlot ()
 	found,j = nil
 
-	for bag = 0, 4 do 
-		for slot = 1, GetContainerNumSlots(bag) do 
-			name=GetContainerItemLink(bag,slot);
-			if name==nil 
-			then 
-				found = true;
+	for bag = 0, 4 do
+		numberOfFreeSlots, BagType = GetContainerNumFreeSlots(bag);
+		if (BagType == 0 and numberOfFreeSlots ~= 0)
+		then
+			for slot = 1, GetContainerNumSlots(bag) do 
+				name=GetContainerItemLink(bag,slot);
+				if name==nil 
+				then 
+					found = true;
+					break;
+				end
+			end
+			if found == true
+			then
+				j=bag;
 				break;
 			end
-		end
-		if found == true
-		then
-			j=bag;
-			break;
 		end
 	end
 	return j
